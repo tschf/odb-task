@@ -1,6 +1,6 @@
-# Oracle Database Tasks
+# Oracle Database Tasks for VSC
 
-This is a simple extension inspired by my equivalent extension for Atom. Basically, you define a configuration file in the root of your project. Unlike Atom being named `.atom-build-oracle.json`, this will look for `.build-oracle.json`. The file is an Array which supports two properties:
+This is a simple extension for Visual Studio Code, inspired by my equivalent extension for Atom. Basically, you define a configuration file in the root of your project. Unlike Atom being named `.atom-build-oracle.json`, this will look for `.build-oracle.json`. The file is an Array which supports two properties:
 
 1. targetName
 2. connectionString
