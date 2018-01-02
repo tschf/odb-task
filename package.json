@@ -40,6 +40,11 @@
             }
         }
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tschf/odb-task.git"
+    },
+    "homepage": "https://github.com/tschf/odb-task/blob/master/README.md",
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
