@@ -31,7 +31,7 @@ function runScript(command: string, connectionString: string, output: vscode.Out
         "cwd": path.dirname(activefilePath)
     };
 
-    let sqlplusCompilationWrapper = path.resolve(__dirname, '..', 'src', 'lib', 'compile.sql');
+    let sqlplusCompilationWrapper = path.resolve(__dirname, '..', 'dist', 'compile.sql');
     var compilePid = ChildProcess.spawn(command, [connectionString, `@${sqlplusCompilationWrapper}`, activefilePath], childProcessConfig);
 
     compilePid.stdout.on('data', (data) => {
