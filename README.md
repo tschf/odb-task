@@ -31,10 +31,10 @@ The extension is not currently published in the marketplace. To install, go to t
 code --install-extension odb-task-*.vsix
 ```
 
-# Author
+## Author
 
 Trent Schafer
 
-# LICENSE
+## LICENSE
 
 MIT
