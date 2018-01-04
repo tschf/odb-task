@@ -23,6 +23,13 @@ So, when you search the command pallette you will find two entries related to th
 1. Compile with SQL*Plus
 2. Compile with SQLcl
 
+## Install
+
+The extension is not currently published in the marketplace. To install, go to the releases within GitHub, and download the latest odb-task-*.vsix file. Then from the command line run the following:
+
+```bash
+code --install-extension odb-task-*.vsix
+```
 
 # Author
 
