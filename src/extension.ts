@@ -39,6 +39,23 @@ function runScript(command: string, connectionString: string, output: vscode.Out
     });
 }
 
+function chooseConnection(programPath: string, outputChannel: vscode.OutputChannel, dbConnections: BuildConfig[]) {
+
+    if (dbConnections.length == 0){
+        vscode.window.showWarningMessage("No connections defined");
+    } else if (dbConnections.length == 1){
+        runScript(programPath, dbConnections[0].connectionString, outputChannel);
+    } else {
+        vscode.window.showQuickPick(dbConnections)
+            .then(selectedBuild => {
+                if (selectedBuild){
+                    runScript(programPath, selectedBuild.connectionString, outputChannel);
+                }
+            });
+    }
+
+}
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -66,7 +83,13 @@ export function activate(context: vscode.ExtensionContext) {
         return;
     }
 
-    let buildTargets = JSON.parse(fs.readFileSync(buildTargetsFile).toString());
+    let buildTargets;
+    try {
+        buildTargets = JSON.parse(fs.readFileSync(buildTargetsFile).toString());
+    } catch (e) {
+        vscode.window.showErrorMessage("Config file contains invalid JSON");
+        return;
+    }
 
     let quickPickList: BuildConfig[] = buildTargets.map(target => {
         target.label = target.targetName;
@@ -78,25 +101,13 @@ export function activate(context: vscode.ExtensionContext) {
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     let sqlPlusCommand = vscode.commands.registerCommand('odb-task.compileSqlPlus', () => {
-        var command = taskContext.exePaths.sqlplus;
-
-        vscode.window.showQuickPick(quickPickList)
-            .then(selectedBuild => {
-                if (selectedBuild){
-                    runScript(command, selectedBuild.connectionString, taskContext.outputChannel);
-                }
-            });
+        var programPath = taskContext.exePaths.sqlplus;
+        chooseConnection(programPath, taskContext.outputChannel, quickPickList);
     });
 
     let sqlClCommand = vscode.commands.registerCommand('odb-task.compileSqlcl', () => {
-        var command = taskContext.exePaths.sqlcl;
-
-        vscode.window.showQuickPick(quickPickList)
-            .then(selectedBuild => {
-                if (selectedBuild){
-                    runScript(command, selectedBuild.connectionString, taskContext.outputChannel);
-                }
-            });
+        var programPath = taskContext.exePaths.sqlcl;
+        chooseConnection(programPath, taskContext.outputChannel, quickPickList);
     });
 
     context.subscriptions.push(sqlPlusCommand);
