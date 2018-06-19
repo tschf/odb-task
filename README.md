@@ -19,6 +19,25 @@ code --install-extension odb-task-*.vsix
 3. Update the contents per the below example
 4. Reload Code just to make sure everything is detected
 
+### Key bindings
+
+The best way to create a shortcut for build is to define it in keyboard shortcuts.
+
+1. Ensure you have run a compile task - the command doesn't appear in the keyboard shortcuts settings until you have successfully run the task
+2. Navigate to Keyboard Shortcuts: File -> Preferences -> Keyboard Shortcuts
+3. Search `odb-task` and set your desired keyboard binding
+
+Alternatively, you can just add to your keybindings.json file directly:
+
+```json
+{
+    "key": "ctrl+shift+b",
+    "command": "odb-task.compileSqlPlus"
+}
+```
+
+The `command` property can be either: `odb-task.compileSqlPlus` or `odb-task.compileSqcl`.
+
 ### Example config
 
 ```json
