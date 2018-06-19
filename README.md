@@ -6,11 +6,7 @@ The goal of this extension is to simplify the ability to run scripts against you
 
 ## Install
 
-The extension is not currently published in the marketplace. To install, go to the releases within GitHub, and download the latest odb-task-*.vsix file. Then from the command line run the following:
-
-```bash
-code --install-extension odb-task-*.vsix
-```
+Search the marketplace for `odb-task` and click the install button. Depends on having SQL\*Plus or SQLcl available on your system (I recommend going to the effort of installing SQL\*Plus).
 
 ## Set up
 
