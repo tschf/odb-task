@@ -3,7 +3,7 @@
     "displayName": "odb-task",
     "description": "Oracle Database Task Runner",
     "publisher": "tschf",
-    "version": "0.0.2",
+    "version": "0.0.3",
         "engines": {
             "vscode": "^1.19.0"
     },
@@ -36,6 +36,11 @@
                     "type": "string",
                     "default": "sql",
                     "description": "The path to the SQLcl executable"
+                },
+                "odb-task.auto-save": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Auto save the active file if there are any changes before compiling"
                 }
             }
         }

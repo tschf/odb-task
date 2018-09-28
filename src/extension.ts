@@ -25,7 +25,18 @@ function runScript(command: string, connectionString: string, output: vscode.Out
     output.clear();
     output.show();
 
-    let activefilePath = vscode.window.activeTextEditor.document.fileName;
+    let activeDoc = vscode.window.activeTextEditor.document;
+    let activefilePath = activeDoc.fileName;
+
+    if (activeDoc.isDirty ) {
+        let autoSave = vscode.workspace.getConfiguration("odb-task").get("auto-save");
+
+        if (autoSave) {
+            vscode.commands.executeCommand("workbench.action.files.save");
+        } else {
+            vscode.window.showWarningMessage("Your file is not saved. You should save before compiling");
+        }
+    }
 
     let childProcessConfig = {
         "cwd": path.dirname(activefilePath)
