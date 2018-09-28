@@ -8,6 +8,8 @@ The goal of this extension is to simplify the ability to run scripts against you
 
 Search the marketplace for `odb-task` and click the install button. Depends on having SQL\*Plus or SQLcl available on your system (I recommend going to the effort of installing SQL\*Plus).
 
+![image](https://user-images.githubusercontent.com/1747643/46234234-a861b180-c343-11e8-8871-094eaf69f808.png)
+
 ## Set up
 
 1. Open your project
@@ -67,7 +69,7 @@ You will prompted for which connection to compile against. Choose the connection
 
 As mentioned, this extension depends on the binaries for SQL*Plus or SQLcl being available on your system. These default to `sqlplus` and `sql` respectively. If these are not within your Path, or have been renamed to something else, you can set an alternative path/name within settings.
 
-![image](https://user-images.githubusercontent.com/1747643/34592890-4d9e8e2e-f195-11e7-9426-a5198f74eeb0.png)
+![image](https://user-images.githubusercontent.com/1747643/46234325-eeb71080-c343-11e8-96a3-f420072de5bc.png)
 
 
 ## Author
